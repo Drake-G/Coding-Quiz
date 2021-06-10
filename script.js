@@ -1,6 +1,6 @@
 //var win = document.querySelector(".win");
 //var lose = document.querySelector(".lose");
-//var timerElement = document.querySelector(".timer-count");
+var timeEl = document.querySelector(".timer-count");
 const startButton = document.getElementById("start-btn");
 const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById
@@ -9,6 +9,7 @@ const questionElement = document.getElementById('question')
 let shuffleQuestions, currentQuestionIndex
 const answerButtonsElement = document.getElementById('answer-btn')
 startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", setTime)
 nextButton.addEventListener("click", () => {
   currentQuestionIndex++
   setNextQuestion()
@@ -16,7 +17,7 @@ nextButton.addEventListener("click", () => {
 
 var winCounter = 0;
 var loseCounter = 0;
-let timerCount;
+let secondsLeft = 60;
 
 function startGame() {
   console.log("hello")
@@ -26,6 +27,21 @@ function startGame() {
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.innerText = secondsLeft;
+
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      resetState();
+      alert("You lose. Bad.")
+    }
+  }, 1000)
+}
+
+
+
 function setNextQuestion() {
   resetState()
   showQuestion(shuffleQuestions[currentQuestionIndex])
@@ -69,9 +85,9 @@ function selectAnswer(e) {
   if (selectedButton === correct) {
     winCounter ++
   } else (
-    timerCount - 10
+    secondsLeft - 10
   )
-  console.log(timerCount)
+  console.log(secondsLeft)
   console.log(winCounter)
   
 
