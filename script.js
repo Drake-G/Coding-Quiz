@@ -29,7 +29,7 @@ function startGame() {
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    timeEl.innerText = secondsLeft;
+    timeEl.innerText = secondsLeft + " seconds remaining";
 
     if(secondsLeft === 0) {
       alert("You lose. Bad.")
