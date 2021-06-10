@@ -15,8 +15,7 @@ nextButton.addEventListener("click", () => {
   setNextQuestion()
 })
 
-var winCounter = 0;
-var loseCounter = 0;
+let winCounter = 0;
 let secondsLeft = 30;
 
 function startGame() {
@@ -33,9 +32,8 @@ function setTime() {
     timeEl.innerText = secondsLeft;
 
     if(secondsLeft === 0) {
-      clearInterval(timerInterval);
-      resetState();
       alert("You lose. Bad.")
+      location.reload()
     }
   }, 1000)
 }
@@ -82,9 +80,9 @@ function selectAnswer(e) {
     startButton.innerText = "View Scores"
     startButton.classList.remove('hide')
   }
-  if (selectedButton.dataset === correct) {
-    winCounter++
-  } if (selectedButton.dataset !== correct) {
+  if (selectedButton.dataset === true) {
+    winCounter+25
+  } if (selectedButton.dataset !== false) {
     secondsLeft-10
   }
 }
@@ -93,8 +91,10 @@ function setStatusClass(element, correct) {
   clearStatusClass(element)
   if (correct) {
     element.classList.add('correct')
+    winCounter+25
   } else {
     element.classList.add('wrong')
+    secondsLeft-10
   }
 }
 
@@ -137,8 +137,11 @@ const questions = [
   ]
   },
 ]
-
-
+function setScore() {
+  score.textContent = winCounter;
+  localStorage.setItem("winCount", winCounter);
+}
+console.log("Score:" + winCounter)
 /*
 var winCounter = 0;
 var loseCounter = 0;
