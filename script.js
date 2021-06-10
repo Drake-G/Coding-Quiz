@@ -17,7 +17,7 @@ nextButton.addEventListener("click", () => {
 
 var winCounter = 0;
 var loseCounter = 0;
-let secondsLeft = 60;
+let secondsLeft = 30;
 
 function startGame() {
   console.log("hello")
@@ -82,15 +82,11 @@ function selectAnswer(e) {
     startButton.innerText = "View Scores"
     startButton.classList.remove('hide')
   }
-  if (selectedButton === correct) {
-    winCounter ++
-  } else (
-    secondsLeft - 10
-  )
-  console.log(secondsLeft)
-  console.log(winCounter)
-  
-
+  if (selectedButton.dataset === correct) {
+    winCounter++
+  } if (selectedButton.dataset !== correct) {
+    secondsLeft-10
+  }
 }
 
 function setStatusClass(element, correct) {
