@@ -17,8 +17,9 @@ body {
     text-align: center;
 }
 #answers {
-    text-align: center;
-    margin-left: 49%;
+    display: flex;
+    justify-content: center;
+
 }
 .btn {
     background-color: blueviolet;
