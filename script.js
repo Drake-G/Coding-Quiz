@@ -75,7 +75,7 @@ var Questions = [
             3: "jQuery",
             4: "Mojang"
         },
-        correctAnswer: "3"
+        correctAnswer: 3
     },
     {
         Question: "Which of the following can be used to retrieve an HTML element by class",

@@ -16,16 +16,22 @@ body {
 #question {
     text-align: center;
 }
-#answers {
-    display: flex;
-    justify-content: center;
-
-}
 .btn {
     background-color: blueviolet;
     display: block;
-    margin: 10px;
+    margin: 0 auto;
 }
+button {
+    display: block;
+    width: 250px;
+}
+#answers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .hide {
     display: none;
 }
